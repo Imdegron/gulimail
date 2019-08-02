@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    #MySQL配置
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.254.28:3306/guli_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+mybatis-plus:
+  mapper-locations: classpath:/mapper/oms/*.xml
+  #数据库主键自增
+  global-config:
+    db-config:
+      id-type: auto
+server:
+  port: 12000
