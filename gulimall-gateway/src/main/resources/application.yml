@@ -1,0 +1,29 @@
+
+spring:
+  cloud:
+    gateway:
+      routes:
+         - id: pms_route
+           uri: lb://gulimall-pms
+           predicates:
+             - Path=/pms/**
+
+         - id: oms_route
+           uri: lb://gulimall-oms
+           predicates:
+             - Path=/oms/**
+
+         - id: sms_route
+           uri: lb://gulimall-sms
+           predicates:
+             - Path=/sms/**
+
+         - id: ums_route
+           uri: lb://gulimall-ums
+           predicates:
+             - Path=/ums/**
+
+  application:
+    name: gulimall-gateway
+server:
+  port: 88
