@@ -7,8 +7,10 @@ import java.util.Map;
 import com.atguigu.gulimall.commons.bean.PageVo;
 import com.atguigu.gulimall.commons.bean.QueryCondition;
 import com.atguigu.gulimall.commons.bean.Resp;
+import com.atguigu.gulimall.commons.to.SkuSaleInfoTo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +28,7 @@ import com.atguigu.gulimall.sms.service.SpuBoundsService;
  * @email 1533966146@qq.com
  * @date 2019-08-01 21:29:18
  */
+@Slf4j
 @Api(tags = "商品spu积分设置 管理")
 @RestController
 @RequestMapping("sms/spubounds")
@@ -33,6 +36,17 @@ public class SpuBoundsController {
     @Autowired
     private SpuBoundsService spuBoundsService;
 
+
+    /**
+     * 保存sku的所有营销信息
+     * @return
+     */
+    @ApiOperation("分页查询(排序)")
+    @PostMapping("/saleinfo/save")
+    public Resp<Object> saveSkuSaleInfos(SkuSaleInfoTo to){
+        log.info("sms接受到信息"+to);
+        return null;
+    }
     /**
      * 列表
      */

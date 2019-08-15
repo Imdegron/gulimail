@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import com.atguigu.gulimall.pms.entity.CategoryEntity;
 import com.atguigu.gulimall.pms.service.CategoryService;
 
-
+import javax.xml.crypto.Data;
 
 
 /**
@@ -33,6 +34,23 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+
+
+    @ApiOperation("获取所有分类数据")
+    @GetMapping("/list/tree")
+    public Resp<Object> listTree(@RequestParam(value = "level") Integer level){
+        List<CategoryEntity> data=categoryService.getCategoryByLevel(level);
+         return  Resp.ok(data);
+    }
+
+
+    @ApiOperation("获取某个分类的所有子分类")
+    @GetMapping("/list/children/tree/{catId}")
+    public Resp<Object> listChildrenTree(@PathVariable( "catId")
+                                         Integer catId){
+           List<CategoryEntity> data=categoryService.getCategoryChildrensByCatId(catId);
+           return  Resp.ok(data);
+    }
     /**
      * 列表
      */
